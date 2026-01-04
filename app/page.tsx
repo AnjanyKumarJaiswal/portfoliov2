@@ -9,7 +9,7 @@ const PROJECTS = [
     description: "An AI-driven design platform that accelerates UI component creation by 70%. Integrated Model Context Protocol (MCP) to reduce API latency by 40%.",
     date: "Oct 2025",
     githubURL: "https://github.com/AnjanyKumarJaiswal/superdesign",
-    liveURL: "https://superdesign.vercel.app",
+    liveURL: "https://super-design.vercel.app",
     tags: ["GeminiAPI", "Node.js", "TypeScript", "MCP SDK", "tRPC", "PostgreSQL", "Three.js"]
   },
   {
