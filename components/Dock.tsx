@@ -20,7 +20,7 @@ const items = [
     { icon: Home, label: "Home", href: "/" },
     { icon: Briefcase, label: "Projects", href: "#projects" },
     { icon: Code, label: "Experience", href: "#experience" },
-    { icon: FileText, label: "Resume", href: "/resume.pdf" },
+    { icon: FileText, label: "Resume", href: "https://drive.google.com/file/d/1ScaQpdPjLgtGkGcwy4RCC1YTr4-R44nO/view?usp=drive_link" },
     { icon: Github, label: "GitHub", href: "https://github.com/AnjanyKumarJaiswal" },
     { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/anjany5322" },
     { icon: Mail, label: "Contact", href: "mailto:anjany.jaiswal2005@gmail.com" },
