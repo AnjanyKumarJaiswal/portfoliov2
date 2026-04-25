@@ -1,28 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #111111;
-  --muted: #737373;
-  --accent: #9ca3af;
-  --border: #e5e5e5;
-  --card-bg: #f5f5f5;
-}
-
-.dark {
-  --background: #08090a;
-  --foreground: #fafafa;
-  --muted: #666666;
-  --accent: #9ca3af;
-  --border: #313131;
-  --card-bg: #111111;
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'IBMPlexMono';
-  src: url('/fonts/IBMPlexMono-Medium.ttf') format('truetype');
+  font-family: 'Instrument Serif';
+  src: url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');
   font-weight: 400;
+  font-style: normal;
   font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --muted: #666666;
+  --accent: #222222;
+  --border: #e5e5e5;
+  --card-bg: #fafafa;
+  --grid-line: rgba(0, 0, 0, 0.1);
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #888888;
+  --accent: #eeeeee;
+  --border: #1a1a1a;
+  --card-bg: #050505;
+  --grid-line: rgba(255, 255, 255, 0.2);
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', serif;
 }
 
 @theme inline {
@@ -32,36 +47,45 @@
   --color-accent: var(--accent);
   --color-border: var(--border);
   --color-card-bg: var(--card-bg);
-  --font-sans: 'IBMPlexMono', monospace;
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'IBMPlexMono', monospace;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   position: relative;
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Background - Plain black, no glow */
-.bg-glow {
+.bg-grid {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   z-index: -1;
-  background: transparent;
+  background-image: radial-gradient(circle, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
   pointer-events: none;
 }
 
-.dark .bg-glow {
-  background: transparent;
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.dashed-border {
+  border: 1px dashed var(--border);
+}
+
+.border-grid {
+  border-color: var(--grid-line);
+}
+
+/* Badge styles from Design 1 */
+.badge {
+  @apply px-3 py-1 text-xs font-medium rounded-full border border-border bg-card-bg hover:bg-accent hover:text-background transition-colors;
 }
 
 ::selection {
-  background: rgba(156, 163, 175, 0.4);
-  color: #fff;
+  background: var(--foreground);
+  color: var(--background);
 }

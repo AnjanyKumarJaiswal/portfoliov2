@@ -1,88 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ProjectProps {
-    title: string;
-    description: string;
-    date: string;
-    githubURL: string;
-    liveURL: string;
-    tags: string[];
-    image?: string;
+  title: string;
+  slug: string;
+  description: {
+    short: string;
+    long: string[];
+    features: string[];
+  };
+  date: string;
+  githubURL: string;
+  liveURL: string;
+  tags: string[];
+  image?: string;
+  icon?: string;
 }
 
-export function ProjectCard({ title, description, date, githubURL, liveURL, tags, image }: ProjectProps) {
-    return (
-        <motion.div
-            whileHover={{ y: -4 }}
-            className="group flex flex-col bg-card-bg border border-border rounded-xl transition-all duration-300 overflow-hidden h-full"
-        >
-            {/* Project Image */}
-            <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                {image ? (
-                    <img
-                        src={image}
-                        alt={title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                ) : (
-                    <div className="w-full h-full flex items-center justify-center text-muted/30 font-bold uppercase tracking-widest text-xs">
-                        No Preview
-                    </div>
-                )}
-            </div>
+export function ProjectCard({ title, slug, description, githubURL, liveURL, tags, image, icon }: ProjectProps) {
+  const router = useRouter();
 
-            {/* Content */}
-            <div className="p-5 flex flex-col flex-1">
-                <div className="mb-3">
-                    <h3 className="text-base font-bold text-foreground">
-                        {title}
-                    </h3>
-                    <p className="text-xs text-muted font-medium mt-1">
-                        {date}
-                    </p>
-                </div>
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      onClick={() => router.push(`/projects/${slug}`)}
+      className="group flex flex-col md:flex-row gap-6 p-4 bg-card-bg/50 border border-border border-dashed rounded-2xl transition-all duration-300 hover:border-foreground/20 hover:bg-muted/5 cursor-pointer"
+    >
+      {/* Project Image */}
+      <div className="relative aspect-video md:w-72 shrink-0 overflow-hidden rounded-xl border border-border bg-muted/10">
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-muted/30 font-sans text-[10px] uppercase tracking-widest">
+            Preview missing
+          </div>
+        )}
+      </div>
 
-                <p className="text-muted text-[13px] leading-relaxed mb-6 line-clamp-3">
-                    {description}
-                </p>
+      {/* Content */}
+      <div className="flex flex-col flex-1 py-1">
+        <div className="flex items-start justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <h3 className="text-3xl font-serif text-foreground">
+              {title}
+            </h3>
+            {icon && (
+              <div className="relative w-6 h-6 rounded-md overflow-hidden bg-muted/20 border border-border">
+                <Image src={icon} alt={`${title} icon`} fill className="object-cover" />
+              </div>
+            )}
+          </div>
+          
+          <div className="flex items-center gap-2 text-xs font-sans tracking-tight">
+            {liveURL && (
+              <Link 
+                href={liveURL} 
+                target="_blank" 
+                onClick={(e) => e.stopPropagation()}
+                className="px-2 py-1 bg-muted/20 border border-border rounded-md text-muted hover:text-foreground transition-all"
+              >
+                Live
+              </Link>
+            )}
+            <span className="text-border">|</span>
+            <Link 
+              href={githubURL} 
+              target="_blank" 
+              onClick={(e) => e.stopPropagation()}
+              className="px-2 py-1 bg-muted/20 border border-border rounded-md text-muted hover:text-foreground transition-all"
+            >
+              GitHub
+            </Link>
+          </div>
+        </div>
 
-                <div className="mt-auto space-y-4">
-                    <div className="flex flex-wrap gap-1.5">
-                        {tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="text-[10px] bg-foreground/5 px-2 py-0.5 rounded-md font-medium text-muted hover:text-foreground transition-colors"
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
+        <p className="text-muted text-sm leading-relaxed mb-4">
+          {description.short}
+        </p>
 
-                    <div className="flex items-center gap-2">
-                        <Link
-                            href={githubURL}
-                            target="_blank"
-                            className="inline-flex items-center gap-2 bg-foreground text-background px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-foreground/90 transition-all"
-                        >
-                            <Github className="w-3.5 h-3.5" />
-                            Source
-                        </Link>
-                        {liveURL && (
-                            <Link
-                                href={liveURL}
-                                target="_blank"
-                                className="inline-flex items-center gap-2 bg-muted/10 text-foreground px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-muted/20 transition-all border border-border"
-                            >
-                                Live Demo
-                            </Link>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </motion.div>
-    );
+        <div className="mt-auto space-y-3">
+          <h4 className="text-sm font-serif text-foreground/80">Technologies Used:</h4>
+          <div className="flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                onClick={(e) => e.stopPropagation()}
+                className="text-[11px] font-sans bg-muted/20 border border-border px-2 py-1 rounded-lg text-muted/90 hover:text-foreground hover:border-foreground/30 transition-colors"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
