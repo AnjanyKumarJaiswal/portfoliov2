@@ -90,22 +90,22 @@ export function Hero() {
           <p className="text-muted leading-relaxed">
             Hi, I'm Anjany, an AI Engineer focused on the intersection of heavy backend architecture and applied AI, Currently pursuing B.Tech at <span className="text-foreground font-medium">SRM IST</span>.
           </p>
-          <p className="text-muted leading-relaxed">
+          {/* <p className="text-muted leading-relaxed">
             I'm currently working as an AI Engineer Intern <a href="https://app.viksaai.com/"><span className="text-foreground font-medium italic">@ViksaAI</span></a>, 
             architecting production-grade AI agents and scalable systems.
-          </p>
+          </p> */}
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <a 
-            href="https://cal.com/anjanykumarjaiswal/15min" 
+          <a
+            href="https://cal.com/anjanykumarjaiswal/15min"
             target="_blank"
             className="flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-xl text-sm font-medium hover:opacity-90 transition-opacity"
           >
             <Calendar size={16} />
             Book an intro call
           </a>
-          <a 
+          <a
             href="mailto:anjany.jaiswal2005@gmail.com"
             className="flex items-center gap-2 px-4 py-2 bg-card-bg border border-border rounded-xl text-sm font-medium hover:bg-accent hover:text-background transition-all"
           >
