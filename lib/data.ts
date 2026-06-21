@@ -92,9 +92,9 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     company: "ViksaAI",
-    logo:"/images/viksaai.png",
+    logo: "/images/viksaai.png",
     role: "AI Engineer Intern",
-    period: "Jan 2026 - Present",
+    period: "Jan 2026 - June 2026",
     location: "Remote",
     descriptions: [
       "Architected and deployed production-grade AI agents using the official Python MCP SDK, enabling seamless interoperability between LLMs and third-party communication protocols.",
