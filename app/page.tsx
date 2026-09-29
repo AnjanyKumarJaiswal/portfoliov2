@@ -9,7 +9,7 @@ import { ContributionGraphs } from "../components/ContributionGraphs";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
-import { PROJECTS, EXPERIENCE, EDUCATION, SKILLS } from "../lib/data";
+import { PROJECTS, EXPERIENCE, OPEN_SOURCE, EDUCATION, SKILLS } from "../lib/data";
 
 function RevealSection({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
@@ -53,6 +53,33 @@ export default function Home() {
                 logo={item.logo}
                 descriptions={item.descriptions}
                 tags={item.tags}
+                isWork
+              />
+            ))}
+          </div>
+        </section>
+      </RevealSection>
+
+      <div className="w-full border-t border-dashed border-grid" />
+
+      <RevealSection className="relative z-50 max-w-[700px] w-full px-6 pt-12 pb-15">
+        <section id="open-source" className="space-y-6">
+          <h2 className="text-3xl font-serif tracking-tight">
+            Open Source Contributions
+          </h2>
+
+          <div className="divide-y divide-border divide-dashed">
+            {OPEN_SOURCE.map((item, idx) => (
+              <ResumeCard
+                key={idx}
+                title={item.company}
+                subtitle={item.role}
+                period={item.period}
+                location={item.location}
+                logo={item.logo}
+                descriptions={item.descriptions}
+                tags={item.tags}
+                url={item.url}
                 isWork
               />
             ))}

@@ -97,10 +97,12 @@ export const EXPERIENCE = [
     period: "Jan 2026 - June 2026",
     location: "Remote",
     descriptions: [
-      "Architected and deployed production-grade AI agents using the official Python MCP SDK, enabling seamless interoperability between LLMs and third-party communication protocols.",
-      "Engineered specialized MCP servers for Gmail and custom SMTP domains, implementing secure authentication flows and standardized tool schemas for real-time email automation.",
+      "Architected and deployed production-grade AI agents using the official Python MCP SDK, enabling seamless interoperability between LLMs and third-party communication protocols for the ViksaAI platform.",
+      "Engineered a comprehensive suite of 20 MCP agents for cloud infrastructure, integrating 10 AWS services (including Lambda, EC2, S3, and RDS) and 10 GCP services (such as GKE, Compute Engine, and BigQuery) to enable scalable, AI-driven resource provisioning.",
+      "Developed robust MCP servers for Kubernetes cluster orchestration and MySQL database management, facilitating secure, real-time data querying and operational control directly through LLM interfaces.",
+      "Built specialized MCP servers for Gmail implementing secure authentication flows and standardized tool schemas to allow real-time email automation and management for end-users.",
     ],
-    tags: ["Python", "MCP SDK", "Flask", "Gmail API", "LLMs"],
+    tags: ["Python", "MCP SDK", "AWS", "GCP", "Kubernetes", "MySQL", "Gmail API", "LLMs"],
   },
   {
     company: "SpazorLabs",
@@ -115,13 +117,17 @@ export const EXPERIENCE = [
       "Built a type-safe API layer allowing other product modules to consume the SPT model through a standardized interface.",
     ],
     tags: ["Python", "Ollama", "FastAPI", "TypeScript", "Docker"],
-  },
+  }
+];
+
+export const OPEN_SOURCE = [
   {
-    company: "Mail0 (YC X25)",
-    logo: "/images/mail0.png",
+    company: "Mail0 (Formerly known as OrchidAI)",
+    logo: "/images/orchidai.png",
     role: "Full Stack Open Source Contributor",
     period: "June 2025 - Aug 2025",
     location: "Remote",
+    url: "https://orchid.ai",
     descriptions: [
       "Reduced potential data loss by 90% by architecting a robust drafts module with auto-save, real-time updates, and dedicated deletion APIs.",
       "Cut API latency by 35% by integrating tRPC, PostgreSQL, and Next.js for seamless, type-safe frontend-backend communication.",
